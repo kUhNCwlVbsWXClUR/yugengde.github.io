@@ -7,15 +7,15 @@
   
   <title>text-recognition | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 数据集准备123456data&#x2F;├── test&#x2F;├── test.txt├── train&#x2F;└── train.txtdata_lmdb  数据标注123456789test.txttest&#x2F;image_1.png 我是中国人test&#x2F;image_2.png 我爱中国...train.txttrain&#x2F;image_3.png 此致">
+  <meta name="description" content="1. 数据集准备123456data&#x2F;├── test&#x2F;├── test.txt├── train&#x2F;└── train.txtdata_lmdb  数据标注格式123456789## test.txttest&#x2F;image_1.png 我是中国人test&#x2F;image_2.png 我爱中国...## train.txttrain&#x2F;image_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="text-recognition">
 <meta property="og:url" content="http://yoursite.com/2020/03/21/text-recognition/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1. 数据集准备123456data&#x2F;├── test&#x2F;├── test.txt├── train&#x2F;└── train.txtdata_lmdb  数据标注123456789test.txttest&#x2F;image_1.png 我是中国人test&#x2F;image_2.png 我爱中国...train.txttrain&#x2F;image_3.png 此致">
+<meta property="og:description" content="1. 数据集准备123456data&#x2F;├── test&#x2F;├── test.txt├── train&#x2F;└── train.txtdata_lmdb  数据标注格式123456789## test.txttest&#x2F;image_1.png 我是中国人test&#x2F;image_2.png 我爱中国...## train.txttrain&#x2F;image_">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-21T08:06:18.000Z">
-<meta property="article:modified_time" content="2020-03-21T08:38:06.321Z">
+<meta property="article:modified_time" content="2020-03-21T08:45:36.075Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="cv">
 <meta name="twitter:card" content="summary">
@@ -91,7 +91,7 @@
       
         <h3 id="1-数据集准备"><a href="#1-数据集准备" class="headerlink" title="1. 数据集准备"></a>1. 数据集准备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data&#x2F;</span><br><span class="line">├── test&#x2F;</span><br><span class="line">├── test.txt</span><br><span class="line">├── train&#x2F;</span><br><span class="line">└── train.txt</span><br><span class="line">data_lmdb</span><br></pre></td></tr></table></figure>
 
-<h4 id="数据标注"><a href="#数据标注" class="headerlink" title="数据标注"></a>数据标注</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">test.txt</span><br><span class="line">test&#x2F;image_1.png 我是中国人</span><br><span class="line">test&#x2F;image_2.png 我爱中国</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">train.txt</span><br><span class="line">train&#x2F;image_3.png 此致 </span><br><span class="line">train&#x2F;image_4.png 敬礼</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="数据标注格式"><a href="#数据标注格式" class="headerlink" title="数据标注格式"></a>数据标注格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## test.txt</span><br><span class="line">test&#x2F;image_1.png 我是中国人</span><br><span class="line">test&#x2F;image_2.png 我爱中国</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">## train.txt</span><br><span class="line">train&#x2F;image_3.png 此致 </span><br><span class="line">train&#x2F;image_4.png 敬礼</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-制作lmdb格式数据"><a href="#2-制作lmdb格式数据" class="headerlink" title="2. 制作lmdb格式数据"></a>2. 制作<code>lmdb</code>格式数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">python3 create_lmdb_dataset.py \</span><br><span class="line">	--inputPath data \</span><br><span class="line">	--gtFile data&#x2F;test.txt \</span><br><span class="line">	--outputPath data_lmdb&#x2F;validation</span><br><span class="line">	</span><br><span class="line">python3 create_lmdb_dataset.py \</span><br><span class="line">	--inputPath data \</span><br><span class="line">	--gtFile data&#x2F;train.txt \</span><br><span class="line">	--outputPath data_lmdb&#x2F;training&#x2F;chinese-text-recognition-part01</span><br></pre></td></tr></table></figure>
 
